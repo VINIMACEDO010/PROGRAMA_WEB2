@@ -3,30 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Contato</title>
+    <title>Exercicio 1</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h2>Formulário de Contato</h2>
-        <form action="processa.php" method="post">
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
-
-            <label for="telefone">Telefone:</label>
-            <input type="number" id="telefone" name="telefone" required>
-
-            <label for="email">E-mail:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="mensagem">Mensagem:</label>
-            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
-
-            <button type="submit">Enviar</button>
+        <h2>Exercicio 1</h2>
+        <form id="form" action="processa.php" method="post">
+            <input type="text" id="nome" name="nome" placeholder="Nome" required>
+            <input type="number" id="telefone" name="telefone" placeholder="Telefone" required>
+            <input type="email" id="email" name="email" placeholder="E-mail" required>
+            <textarea id="mensagem" name="mensagem" placeholder="Mensagem" required></textarea>
+            <button type="submit">Enviar via POST</button>
         </form>
 
-        <h3>Enviar via GET</h3>
-        <a href="processa.php?nome=Teste&telefone=999999999&email=teste@email.com&mensagem=Olá"></a>
+        <form id="form-get" action="processa.php" method="get">
+            <input type="hidden" name="nome" id="get-nome">
+            <input type="hidden" name="telefone" id="get-telefone">
+            <input type="hidden" name="email" id="get-email">
+            <input type="hidden" name="mensagem" id="get-mensagem">
+            <button type="submit" id="btn-get">Enviar via GET</button>
+        </form>
     </div>
+
+    <script>
+        document.getElementById("btn-get").addEventListener("click", function() {
+            document.getElementById("get-nome").value = document.getElementById("nome").value;
+            document.getElementById("get-telefone").value = document.getElementById("telefone").value;
+            document.getElementById("get-email").value = document.getElementById("email").value;
+            document.getElementById("get-mensagem").value = document.getElementById("mensagem").value;
+        });
+    </script>
 </body>
 </html>
