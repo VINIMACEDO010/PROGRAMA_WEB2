@@ -13,7 +13,7 @@ echo "Email: " . $faker->email() . "\n";
 echo "Texto: " . $faker->realtext(200) . "\n";
 
 
-// para rodar esse código acima e necessário rodar o seguinte comando no terminal ''
+// para rodar esse código acima e necessário rodar o seguinte comando no terminal - php faker.php''
 
 ?> 
 
