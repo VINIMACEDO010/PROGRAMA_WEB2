@@ -1,9 +1,22 @@
-public function jogadores()
-{
-    return $this->belongsToMany(Jogador::class, 'jogador_torneio');
-}
+<?php
 
-public function partidas()
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Torneio extends Model
 {
-    return $this->hasMany(Partida::class);
+    use HasFactory;
+
+    protected $fillable = [
+        'nome',
+        'data',
+        'categoria', // masculino, feminino, misto
+    ];
+
+    public function jogadores()
+    {
+        return $this->belongsToMany(Jogador::class, 'inscricoes');
+    }
 }

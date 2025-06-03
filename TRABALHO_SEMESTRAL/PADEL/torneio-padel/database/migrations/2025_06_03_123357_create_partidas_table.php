@@ -2,17 +2,11 @@ public function up()
 {
     Schema::create('partidas', function (Blueprint $table) {
         $table->id();
-
-        $table->unsignedBigInteger('jogador1_id');
-        $table->unsignedBigInteger('jogador2_id');
-
-        $table->string('resultado')->nullable(); // Ex: "6x3", "7x6"
-        $table->timestamp('data_partida');
-
+        $table->foreignId('torneio_id')->constrained()->onDelete('cascade');
+        $table->foreignId('jogador1_id')->constrained('jogadors')->onDelete('cascade');
+        $table->foreignId('jogador2_id')->constrained('jogadors')->onDelete('cascade');
+        $table->string('resultado')->nullable(); // Ex: "6x3"
+        $table->dateTime('data_partida')->nullable();
         $table->timestamps();
-
-        // Relacionamentos
-        $table->foreign('jogador1_id')->references('id')->on('jogadors')->onDelete('cascade');
-        $table->foreign('jogador2_id')->references('id')->on('jogadors')->onDelete('cascade');
     });
 }
